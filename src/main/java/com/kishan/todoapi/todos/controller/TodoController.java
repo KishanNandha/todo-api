@@ -2,6 +2,8 @@ package com.kishan.todoapi.todos.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +29,7 @@ public class TodoController {
 	private UserRepo userRepo;
 	
 	@PostMapping("/todos/getAll")
-	private List<Todo> getTodosForUser(@RequestBody TodoRequestBean todoRequestBean) {
+	private List<Todo> getTodosForUser(@Valid @RequestBody TodoRequestBean todoRequestBean) {
 		
 		UserBean user = userRepo.findByUserName(todoRequestBean.getUserName());
 		if(null == user) {
@@ -44,7 +46,7 @@ public class TodoController {
 	}
 	
 	@PostMapping("/todos/retrieve")
-	private Todo getTodoDetails(@RequestBody TodoRequestBean todoRequestBean) {
+	private Todo getTodoDetails(@Valid @RequestBody TodoRequestBean todoRequestBean) {
 		
 		UserBean user = userRepo.findByUserName(todoRequestBean.getUserName());
 		if(null == user) {
