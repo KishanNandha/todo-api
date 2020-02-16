@@ -27,13 +27,13 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 	@ExceptionHandler(UserNotFoundException.class)
 	public final ResponseEntity<ExceptionResponse> handleUserNotFoundException(Exception ex, WebRequest request){
 		ExceptionResponse response = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(TodoNotFoundException.class)
 	public final ResponseEntity<ExceptionResponse> handleTodoNotFoundException(Exception ex, WebRequest request){
 		ExceptionResponse response = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
 	}
 	
 	@Override //this method is getting called when request body is not valid
