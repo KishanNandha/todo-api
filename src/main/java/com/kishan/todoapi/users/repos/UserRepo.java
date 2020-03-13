@@ -7,4 +7,6 @@ import com.kishan.todoapi.todos.beans.UserBean;
 public interface UserRepo extends CrudRepository<UserBean, Integer>{
 
 	UserBean findByUserName(String username);
+	
+	UserBean findByUserNameAndUserPassword(String username, String password);
 }

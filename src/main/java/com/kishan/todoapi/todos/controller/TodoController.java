@@ -18,7 +18,7 @@ import com.kishan.todoapi.todos.beans.UserBean;
 import com.kishan.todoapi.todos.repos.TodoRepo;
 import com.kishan.todoapi.users.repos.UserRepo;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class TodoController {
 	
@@ -28,6 +28,7 @@ public class TodoController {
 	@Autowired
 	private UserRepo userRepo;
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/todos/getAll")
 	private List<Todo> getTodosForUser(@Valid @RequestBody TodoRequestBean todoRequestBean) {
 		
